@@ -1,4 +1,5 @@
 import { Landmark, Globe, Mail, MessageCircle, User } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 const Footer = () => {
   return (
@@ -29,10 +30,10 @@ const Footer = () => {
           <div className="space-y-6">
             <h4 className="text-lg font-semibold">Platform</h4>
             <ul className="space-y-4 text-white/60">
-              <li><a href="#" className="hover:text-brand-400 transition-colors">Neighborhood Search</a></li>
-              <li><a href="#" className="hover:text-brand-400 transition-colors">Comparison Tool</a></li>
-              <li><a href="#" className="hover:text-brand-400 transition-colors">Heatmaps</a></li>
-              <li><a href="#" className="hover:text-brand-400 transition-colors">Data Methodology</a></li>
+              <li><Link to="/explore" className="hover:text-brand-400 transition-colors">Neighborhood Search</Link></li>
+              <li><Link to="/compare" className="hover:text-brand-400 transition-colors">Comparison Tool</Link></li>
+              <li><Link to="/login" className="hover:text-brand-400 transition-colors">Sign In</Link></li>
+              <li><Link to="/register" className="hover:text-brand-400 transition-colors">Create Account</Link></li>
             </ul>
           </div>
 

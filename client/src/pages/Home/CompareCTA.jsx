@@ -135,7 +135,7 @@ const CompareCTA = () => {
           <div className="relative h-[500px] md:h-[600px] flex items-center justify-center lg:justify-center pr-0">
             {/* Card 1 - Mumbai */}
             <ComparisonCard
-              image="/images/neighborhoods/mumbai.png"
+              image="/images/Home page/mumbai.png"
               name="Worli, Mumbai"
               score="8.9"
               color="bg-blue-600"
@@ -146,7 +146,7 @@ const CompareCTA = () => {
 
             {/* Card 2 - Bangalore */}
             <ComparisonCard
-              image="/images/neighborhoods/bangalore.png"
+              image="/images/Home page/bangalore.png"
               name="Indiranagar, BLR"
               score="9.2"
               color="bg-brand-600"
@@ -157,7 +157,7 @@ const CompareCTA = () => {
 
             {/* Card 3 - Gurgaon */}
             <ComparisonCard
-              image="/images/neighborhoods/gurgaon.png"
+              image="/images/Home page/gurgaon.png"
               name="Golf Course, GGN"
               score="8.7"
               color="bg-amber-600"

@@ -2,7 +2,7 @@ import React from 'react';
 import { Search, MapPin, DollarSign, BarChart3, Building2 } from 'lucide-react';
 import { motion } from 'framer-motion';
 
-const Hero = '/images/neighborhoods/Landing_image.jpg';
+const Hero = '/images/Home page/Landing_image.jpg';
 
 const HeroSection = () => {
   return (
