@@ -41,20 +41,20 @@ const createCustomIcon = (score, name) => {
   return L.divIcon({
     className: 'custom-score-marker',
     html: `
-      <div style="width: 120px; display: flex; flex-direction: column; align-items: center; cursor: pointer;">
-        <div style="position: relative;">
+      <div style="position: absolute; left: 0; top: 0;">
+        <div style="position: absolute; left: 0; top: 0; transform: translate(-50%, -100%); display: flex; flex-direction: column; align-items: center; cursor: pointer; padding-bottom: 2px;">
           <div style="width: 34px; height: 34px; background: #0F2F20; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-size: 13px; font-weight: bold; box-shadow: 0 4px 12px rgba(0,0,0,0.3); border: 2px solid white; position: relative; z-index: 10;">
             ${score}
           </div>
-          <div style="position: absolute; bottom: -4px; left: 50%; transform: translateX(-50%) rotate(45deg); width: 10px; height: 10px; background: #0F2F20; z-index: 0;"></div>
+          <div style="width: 10px; height: 10px; background: #0F2F20; transform: rotate(45deg); margin-top: -6px; z-index: 0;"></div>
         </div>
-        <div style="margin-top: 4px; padding: 2px 10px; background: white; border-radius: 20px; font-size: 11px; font-weight: 700; color: #1e293b; box-shadow: 0 2px 8px rgba(0,0,0,0.12); border: 1px solid #f1f5f9; white-space: nowrap; text-align: center;">
+        <div style="position: absolute; left: 0; top: 4px; transform: translateX(-50%); padding: 2px 10px; background: white; border-radius: 20px; font-size: 11px; font-weight: 700; color: #1e293b; box-shadow: 0 2px 8px rgba(0,0,0,0.12); border: 1px solid #f1f5f9; white-space: nowrap; text-align: center;">
           ${name}
         </div>
       </div>
     `,
-    iconSize: [120, 66],
-    iconAnchor: [60, 44],
+    iconSize: [0, 0],
+    iconAnchor: [0, 0],
   });
 };
 
@@ -62,15 +62,17 @@ const createCustomIcon = (score, name) => {
 const userPinIcon = L.divIcon({
   className: 'user-pin-marker',
   html: `
-    <div style="display: flex; flex-direction: column; align-items: center;">
-      <div style="width: 28px; height: 28px; background: #ef4444; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; box-shadow: 0 4px 12px rgba(239,68,68,0.4); border: 2px solid white;">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+    <div style="position: absolute; left: 0; top: 0;">
+      <div style="position: absolute; left: 0; top: 0; transform: translate(-50%, -100%); display: flex; flex-direction: column; align-items: center;">
+        <div style="width: 28px; height: 28px; background: #ef4444; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; box-shadow: 0 4px 12px rgba(239,68,68,0.4); border: 2px solid white; position: relative; z-index: 10;">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+        </div>
+        <div style="width: 8px; height: 8px; background: #ef4444; transform: rotate(45deg); margin-top: -5px; z-index: 0;"></div>
       </div>
-      <div style="width: 8px; height: 8px; background: #ef4444; transform: rotate(45deg); margin-top: -4px;"></div>
     </div>
   `,
-  iconSize: [28, 32],
-  iconAnchor: [14, 32],
+  iconSize: [0, 0],
+  iconAnchor: [0, 0],
 });
 
 const MapNeighborhoodCard = ({ neighborhood, isActive }) => {
