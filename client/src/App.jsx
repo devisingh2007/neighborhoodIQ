@@ -4,6 +4,7 @@ import Home from './pages/Home';
 import Explore from './pages/Explore';
 import Login from './pages/Auth/Login';
 import Register from './pages/Auth/Register';
+import Compare from './pages/Compare';
 import Navbar from './components/layout/Navbar';
 import Footer from './components/layout/Footer';
 import { AuthProvider } from './context/AuthContext';
@@ -22,6 +23,7 @@ function AppContent() {
           <Route path="/explore" element={<Explore />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
+          <Route path="/compare" element={<Compare />} />
         </Routes>
       </main>
       {!isAuthPage && <Footer />}
