@@ -1,11 +1,22 @@
 import React, { useState, useEffect } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { Search, Menu, X, Building2 } from 'lucide-react';
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [navSearch, setNavSearch] = useState('');
   const location = useLocation();
+  const navigate = useNavigate();
+
+  const handleNavSearch = () => {
+    if (navSearch.trim()) {
+      navigate(`/search?q=${encodeURIComponent(navSearch.trim())}`);
+      setNavSearch('');
+    } else {
+      navigate('/search');
+    }
+  };
 
   useEffect(() => {
     const handleScroll = () => {
@@ -67,10 +78,15 @@ const Navbar = () => {
             {/* Search Bar */}
             <div className="relative group">
               <div className="flex items-center px-4 py-2 rounded-full bg-slate-50 border border-slate-100 transition-all group-focus-within:bg-white group-focus-within:border-emerald-500 group-focus-within:shadow-sm w-64 lg:w-72">
-                <Search size={16} className="text-slate-400 group-focus-within:text-emerald-500 mr-2.5" />
-                <input 
-                  type="text" 
-                  placeholder="Search neighborhoods" 
+                <button onClick={handleNavSearch} className="shrink-0 mr-2.5">
+                  <Search size={16} className="text-slate-400 group-focus-within:text-emerald-500 hover:text-[#11B573] transition-colors" />
+                </button>
+                <input
+                  type="text"
+                  placeholder="Search neighborhoods, cities..."
+                  value={navSearch}
+                  onChange={(e) => setNavSearch(e.target.value)}
+                  onKeyDown={(e) => e.key === 'Enter' && handleNavSearch()}
                   className="bg-transparent border-none outline-none text-sm w-full placeholder:text-slate-400 text-slate-700"
                 />
               </div>
