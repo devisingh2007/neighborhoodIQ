@@ -2,6 +2,7 @@ import React from 'react';
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import Home from './pages/Home';
 import Explore from './pages/Explore';
+import Dashboard from './pages/Dashboard';
 import Login from './pages/Auth/Login';
 import Register from './pages/Auth/Register';
 import Compare from './pages/Compare';
@@ -13,14 +14,16 @@ import { AuthProvider } from './context/AuthContext';
 function AppContent() {
   const location = useLocation();
   const isAuthPage = location.pathname === '/login' || location.pathname === '/register';
+  const isDashboard = location.pathname === '/home' || location.pathname === '/dashboard';
 
   return (
     <div className="flex flex-col min-h-screen bg-white">
-      {!isAuthPage && <Navbar />}
+      {!isAuthPage && !isDashboard && <Navbar />}
       <main className="flex-grow">
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/home" element={<Home />} />
+          <Route path="/home" element={<Dashboard />} />
+          <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/explore" element={<Explore />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
@@ -28,7 +31,7 @@ function AppContent() {
           <Route path="/search" element={<Search />} />
         </Routes>
       </main>
-      {!isAuthPage && <Footer />}
+      {!isAuthPage && !isDashboard && <Footer />}
     </div>
   );
 }
