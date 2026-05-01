@@ -19,20 +19,20 @@ const Compare = () => {
   return (
     <div className="min-h-screen bg-[#F8FAFC]">
       {/* Header Section */}
-      <div className="pt-32 pb-12 text-center">
-        <h1 className="text-4xl md:text-6xl font-bold text-slate-900 mb-4 tracking-tight">
+      <div className="pt-24 md:pt-32 pb-8 md:pb-12 text-center px-4">
+        <h1 className="text-3xl md:text-6xl font-bold text-slate-900 mb-3 tracking-tight leading-tight">
           Compare <span className="text-[#11B573]">Neighborhoods</span>
         </h1>
-        <p className="text-slate-500 text-lg font-medium">
+        <p className="text-slate-500 text-sm md:text-lg font-medium max-w-[280px] md:max-w-none mx-auto">
           Side-by-side insights to help you choose smarter
         </p>
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-24">
         {/* Selection Cards */}
-        <AreaCards 
-          selectedAreas={selectedAreas} 
-          onAdd={() => setIsSidebarOpen(true)} 
+        <AreaCards
+          selectedAreas={selectedAreas}
+          onAdd={() => setIsSidebarOpen(true)}
         />
 
         {/* Quick Insights */}
@@ -46,9 +46,9 @@ const Compare = () => {
       </div>
 
       {/* Sidebar Overlay */}
-      <AddNeighborhoodSidebar 
-        isOpen={isSidebarOpen} 
-        onClose={() => setIsSidebarOpen(false)} 
+      <AddNeighborhoodSidebar
+        isOpen={isSidebarOpen}
+        onClose={() => setIsSidebarOpen(false)}
         onAdd={handleAddNeighborhoods}
         alreadySelected={selectedAreas}
       />
