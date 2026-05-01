@@ -4,6 +4,7 @@ import HowItWorks from './HowItWorks';
 import TopAreas from './TopAreas';
 import BrowseByCity from './BrowseByCity';
 import CompareCTA from './CompareCTA';
+import DiscoverCTA from './DiscoverCTA';
 
 const Home = () => {
   return (
@@ -13,6 +14,7 @@ const Home = () => {
       <TopAreas />
       <BrowseByCity />
       <CompareCTA />
+      <DiscoverCTA />
     </div>
   );
 };

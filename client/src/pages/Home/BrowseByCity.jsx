@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef, useState } from 'react';
 import { motion } from 'framer-motion';
 
 const cities = [
@@ -42,6 +42,19 @@ const cardVariants = {
 };
 
 const BrowseByCity = () => {
+  const containerRef = useRef(null);
+  const [activeIndex, setActiveIndex] = useState(0);
+
+  const handleScroll = () => {
+    if (containerRef.current) {
+      const scrollPosition = containerRef.current.scrollLeft;
+      const cardWidth = containerRef.current.children[0].offsetWidth;
+      // Calculate which card is most visible
+      const index = Math.round(scrollPosition / cardWidth);
+      setActiveIndex(index);
+    }
+  };
+
   return (
     <section className="section-container">
       {/* Header */}
@@ -55,20 +68,22 @@ const BrowseByCity = () => {
       </div>
 
       {/* City Cards */}
-      <motion.div
-        className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-5"
-        variants={containerVariants}
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, amount: 0.2 }}
+      <div 
+        ref={containerRef}
+        onScroll={handleScroll}
+        className="flex overflow-x-auto snap-x snap-mandatory gap-4 md:grid md:grid-cols-3 lg:grid-cols-5 md:gap-5 pb-4 md:pb-0 custom-scrollbar md:overflow-visible"
+        style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
       >
         {cities.map((city, i) => (
           <motion.div
             key={i}
             variants={cardVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.2 }}
             whileHover={{ scale: 1.04, y: -4 }}
-            transition={{ type: 'spring', stiffness: 300, damping: 20 }}
-            className="relative rounded-2xl overflow-hidden cursor-pointer group"
+            transition={{ type: 'spring', stiffness: 300, damping: 20, delay: i * 0.1 }}
+            className="snap-center shrink-0 w-[60vw] sm:w-[220px] md:w-auto relative rounded-2xl overflow-hidden cursor-pointer group"
             style={{
               aspectRatio: '5/4',
               minHeight: '160px',
@@ -103,7 +118,19 @@ const BrowseByCity = () => {
             </div>
           </motion.div>
         ))}
-      </motion.div>
+      </div>
+
+      {/* Mobile Dots Indicator */}
+      <div className="flex justify-center items-center gap-2 mt-2 md:hidden">
+        {cities.map((_, idx) => (
+          <div 
+            key={idx} 
+            className={`h-1.5 rounded-full transition-all duration-300 ${
+              activeIndex === idx ? 'w-4 bg-brand-500' : 'w-1.5 bg-gray-200'
+            }`}
+          />
+        ))}
+      </div>
     </section>
   );
 };
