@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-route
 import Home from './pages/Home';
 import Explore from './pages/Explore';
 import Dashboard from './pages/Dashboard';
+import About from './pages/About';
 import Login from './pages/Auth/Login';
 import Register from './pages/Auth/Register';
 import Compare from './pages/Compare';
@@ -29,6 +30,7 @@ function AppContent() {
           <Route path="/register" element={<Register />} />
           <Route path="/compare" element={<Compare />} />
           <Route path="/search" element={<Search />} />
+          <Route path="/about" element={<About />} />
         </Routes>
       </main>
       {!isAuthPage && !isDashboard && <Footer />}
