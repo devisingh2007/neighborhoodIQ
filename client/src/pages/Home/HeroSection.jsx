@@ -1,7 +1,6 @@
 import React from 'react';
 import { Search, MapPin, DollarSign, BarChart3, Building2 } from 'lucide-react';
 import { motion } from 'framer-motion';
-import { Link } from 'react-router-dom';
 
 const Hero = '/images/Home page/Landing_image.jpg';
 
@@ -30,22 +29,10 @@ const HeroSection = () => {
               Real Estate Decisions
             </h1>
 
-            <p className="text-xl text-white/80 mb-10 max-w-2xl leading-relaxed">
+            <p className="text-xl text-white/80 mb-12 max-w-2xl leading-relaxed">
               Comprehensive neighborhood intelligence platform combining safety, air quality,
               healthcare, and more into a transparent, audit-ready score.
             </p>
-            
-            <div className="flex flex-wrap gap-4 mb-14">
-              <Link 
-                to="/home" 
-                className="px-8 py-4 bg-[#11B573] hover:bg-[#0f9a62] text-white rounded-2xl transition-all font-bold text-lg shadow-xl shadow-emerald-500/20 hover:-translate-y-1"
-              >
-                Go to Dashboard
-              </Link>
-              <button className="px-8 py-4 bg-white/10 hover:bg-white/20 text-white backdrop-blur-md rounded-2xl transition-all font-bold text-lg border border-white/20">
-                How it Works
-              </button>
-            </div>
           </motion.div>
 
           {/* Search Bar Container */}

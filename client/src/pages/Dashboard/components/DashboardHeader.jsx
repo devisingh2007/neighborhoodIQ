@@ -21,7 +21,7 @@ const DashboardHeader = () => {
 
         <div className="hidden lg:flex items-center gap-8">
           {[
-            { name: 'Home', path: '/' },
+            { name: 'Home', path: '/home' },
             { name: 'Explore', path: '/explore' },
             { name: 'Compare', path: '/compare' },
             { name: 'About', path: '/about' }
