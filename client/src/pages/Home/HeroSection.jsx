@@ -1,6 +1,7 @@
 import React from 'react';
 import { Search, MapPin, DollarSign, BarChart3, Building2 } from 'lucide-react';
 import { motion } from 'framer-motion';
+import { Link } from 'react-router-dom';
 
 const Hero = '/images/Home page/Landing_image.jpg';
 
@@ -29,10 +30,22 @@ const HeroSection = () => {
               Real Estate Decisions
             </h1>
 
-            <p className="text-xl text-white/80 mb-12 max-w-2xl leading-relaxed">
+            <p className="text-xl text-white/80 mb-10 max-w-2xl leading-relaxed">
               Comprehensive neighborhood intelligence platform combining safety, air quality,
               healthcare, and more into a transparent, audit-ready score.
             </p>
+            
+            <div className="flex flex-wrap gap-4 mb-14">
+              <Link 
+                to="/home" 
+                className="px-8 py-4 bg-[#11B573] hover:bg-[#0f9a62] text-white rounded-2xl transition-all font-bold text-lg shadow-xl shadow-emerald-500/20 hover:-translate-y-1"
+              >
+                Go to Dashboard
+              </Link>
+              <button className="px-8 py-4 bg-white/10 hover:bg-white/20 text-white backdrop-blur-md rounded-2xl transition-all font-bold text-lg border border-white/20">
+                How it Works
+              </button>
+            </div>
           </motion.div>
 
           {/* Search Bar Container */}
@@ -40,7 +53,7 @@ const HeroSection = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="bg-white p-2 rounded-2xl shadow-2xl flex flex-col md:flex-row items-center gap-2"
+            className="bg-white p-2 rounded-2xl shadow-2xl flex flex-col md:flex-row items-center gap-0 md:gap-2"
           >
             <div className="w-full md:w-1/4 h-14 relative group">
               <select className="w-full h-full pl-12 pr-4 appearance-none outline-none text-gray-700 bg-transparent rounded-xl hover:bg-gray-50 transition-colors cursor-pointer">
@@ -52,7 +65,7 @@ const HeroSection = () => {
               <MapPin className="absolute left-4 top-1/2 -translate-y-1/2 text-brand-600 group-hover:scale-110 transition-transform" size={20} />
             </div>
 
-            <div className="w-full md:w-1/4 h-14 relative border-l border-gray-100 group">
+            <div className="w-full md:w-1/4 h-14 relative group border-b md:border-b-0 md:border-l border-gray-100">
               <select className="w-full h-full pl-12 pr-4 appearance-none outline-none text-gray-700 bg-transparent rounded-xl hover:bg-gray-50 transition-colors cursor-pointer">
                 <option value="">Price Range</option>
                 <option value="economy">Economy</option>
@@ -62,7 +75,7 @@ const HeroSection = () => {
               <DollarSign className="absolute left-4 top-1/2 -translate-y-1/2 text-brand-600 group-hover:scale-110 transition-transform" size={20} />
             </div>
 
-            <div className="w-full md:w-1/4 h-14 relative border-l border-gray-100 group">
+            <div className="w-full md:w-1/4 h-14 relative group border-b md:border-b-0 md:border-l border-gray-100">
               <select className="w-full h-full pl-12 pr-4 appearance-none outline-none text-gray-700 bg-transparent rounded-xl hover:bg-gray-50 transition-colors cursor-pointer">
                 <option value="">Min Score</option>
                 <option value="8">8.0+ Excellent</option>
@@ -72,7 +85,7 @@ const HeroSection = () => {
               <BarChart3 className="absolute left-4 top-1/2 -translate-y-1/2 text-brand-600 group-hover:scale-110 transition-transform" size={20} />
             </div>
 
-            <div className="w-full md:w-1/4 h-14 relative border-l border-gray-100 group">
+            <div className="w-full md:w-1/4 h-14 relative group border-b md:border-b-0 md:border-l border-gray-100 mb-2 md:mb-0">
               <select className="w-full h-full pl-12 pr-4 appearance-none outline-none text-gray-700 bg-transparent rounded-xl hover:bg-gray-50 transition-colors cursor-pointer">
                 <option value="">Area Type</option>
                 <option value="residential">Residential</option>
@@ -102,7 +115,7 @@ const HeroSection = () => {
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ delay: 0.5 + i * 0.1 }}
-                className="text-white"
+                className={`text-white ${i === 4 ? 'hidden md:block' : ''}`}
               >
                 <div className="text-3xl font-bold mb-1">{stat.value}</div>
                 <div className="text-white/40 text-sm font-medium uppercase tracking-wider">{stat.label}</div>
