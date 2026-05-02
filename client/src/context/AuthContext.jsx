@@ -18,6 +18,20 @@ export const AuthProvider = ({ children }) => {
   }, []);
 
   const login = async (email, password) => {
+    // MOCK LOGIN FOR DEVELOPMENT
+    if (email === 'admin@neighborhoodiq.com' && password === 'admin@1234') {
+      const mockUser = {
+        name: 'Dev Singh',
+        email: 'admin@neighborhoodiq.com',
+        avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=150&h=150&auto=format&fit=crop',
+        isPremium: true
+      };
+      const mockToken = 'mock-jwt-token-123';
+      localStorage.setItem('token', mockToken);
+      setUser(mockUser);
+      return { success: true };
+    }
+
     try {
       const response = await axios.post('http://localhost:5000/api/v1/auth/login', { email, password });
       const { user: userData, token } = response.data.data;

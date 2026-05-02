@@ -6,7 +6,7 @@ export const compareData = [
     score: 92,
     highlight: 'Best Overall',
     highlightIcon: 'trophy',
-    image: 'https://images.unsplash.com/photo-1596743444221-6015070b23e1?q=80&w=1000&auto=format&fit=crop',
+    image: '/images/neighborhoods/powai.png',
     metrics: [
       { label: 'Overall Score', value: 92, status: 'Excellent', progress: 92, color: 'emerald' },
       { label: 'Safety', value: 92, status: 'Excellent', progress: 92, color: 'emerald' },
@@ -34,7 +34,7 @@ export const compareData = [
     score: 88,
     highlight: 'Top Schools',
     highlightIcon: 'graduation-cap',
-    image: 'https://images.unsplash.com/photo-1506146332389-18140dc7b2fb?q=80&w=1000&auto=format&fit=crop',
+    image: '/images/neighborhoods/bandra.png',
     metrics: [
       { label: 'Overall Score', value: 88, status: 'Good', progress: 88, color: 'blue' },
       { label: 'Safety', value: 85, status: 'Good', progress: 85, color: 'blue' },
@@ -62,7 +62,7 @@ export const compareData = [
     score: 85,
     highlight: 'Best Value',
     highlightIcon: 'dollar-sign',
-    image: 'https://images.unsplash.com/photo-1531219432768-9f540ce91ef3?q=80&w=1000&auto=format&fit=crop',
+    image: '/images/neighborhoods/koramangala.png',
     metrics: [
       { label: 'Overall Score', value: 85, status: 'Good', progress: 85, color: 'blue' },
       { label: 'Safety', value: 78, status: 'Good', progress: 78, color: 'blue' },
@@ -93,7 +93,7 @@ export const compareData = [
     score: 79,
     highlight: 'Trendy & Vibrant',
     highlightIcon: 'heart',
-    image: 'https://images.unsplash.com/photo-1515165597734-7b798038d618?q=80&w=1000&auto=format&fit=crop',
+    image: '/images/neighborhoods/dwarka.png',
     metrics: [
       { label: 'Overall Score', value: 79, status: 'Good', progress: 79, color: 'blue' },
       { label: 'Safety', value: 81, status: 'Good', progress: 81, color: 'blue' },

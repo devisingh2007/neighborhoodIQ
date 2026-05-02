@@ -19,11 +19,11 @@ const Recommendations = () => {
       <div className="relative group">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6">
           {[
-            { name: 'Koramangala', city: 'Bangalore', score: 86, tag: 'Great Match', img: 'https://images.unsplash.com/photo-1596743444221-6015070b23e1?q=80&w=1000&auto=format&fit=crop' },
-            { name: 'Whitefield', city: 'Bangalore', score: 84, tag: 'Great Match', img: 'https://images.unsplash.com/photo-1506146332389-18140dc7b2fb?q=80&w=1000&auto=format&fit=crop' },
-            { name: 'Indiranagar', city: 'Bangalore', score: 82, tag: 'Good Match', img: 'https://images.unsplash.com/photo-1531219432768-9f540ce91ef3?q=80&w=1000&auto=format&fit=crop' },
-            { name: 'Jubilee Hills', city: 'Hyderabad', score: 78, tag: 'Good Match', img: 'https://images.unsplash.com/photo-1515165597734-7b798038d618?q=80&w=1000&auto=format&fit=crop' },
-            { name: 'Gachibowli', city: 'Hyderabad', score: 78, tag: 'Good Match', img: 'https://images.unsplash.com/photo-1506146332389-18140dc7b2fb?q=80&w=1000&auto=format&fit=crop' },
+            { name: 'Koramangala', city: 'Bangalore', score: 86, tag: 'Great Match', img: '/images/neighborhoods/koramangala.png' },
+            { name: 'Whitefield', city: 'Bangalore', score: 84, tag: 'Great Match', img: '/images/neighborhoods/for_desbord.png' },
+            { name: 'Indiranagar', city: 'Bangalore', score: 82, tag: 'Good Match', img: '/images/neighborhoods/whitefield.png' },
+            { name: 'Jubilee Hills', city: 'Hyderabad', score: 78, tag: 'Good Match', img: '/images/neighborhoods/hebbal.png' },
+            { name: 'Gachibowli', city: 'Hyderabad', score: 78, tag: 'Good Match', img: '/images/neighborhoods/powai.png' },
           ].map((area, i) => (
             <div key={i} className="bg-white rounded-[1.5rem] p-3 shadow-sm border border-slate-100 hover:shadow-lg transition-all group/card">
               <div className="relative h-32 rounded-[1rem] overflow-hidden mb-3">
