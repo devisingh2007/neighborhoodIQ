@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Check, Plus, Minus, Crosshair, Trash2, MapPin } from 'lucide-react';
+import { Check, Plus, Minus, Crosshair, Trash2, MapPin, SlidersHorizontal } from 'lucide-react';
 import { MapContainer, TileLayer, Marker, Popup, useMapEvents, useMap } from 'react-leaflet';
 import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
@@ -131,11 +131,20 @@ const ExploreMap = ({ neighborhoods }) => {
   };
 
   return (
-    <div className="max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-8 py-8 h-[calc(100vh-140px)] min-h-[750px]">
+    <div className="max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-8 py-4 md:py-8 h-[calc(100vh-140px)] md:h-[calc(100vh-140px)] min-h-[550px] md:min-h-[750px]">
+      
+      {/* Mobile Map Header */}
+      <div className="lg:hidden flex items-center justify-between mb-4 px-2">
+        <h2 className="text-[20px] font-bold text-slate-900 tracking-tight">Explore on Map</h2>
+        <button className="p-2 bg-white rounded-lg shadow-sm border border-slate-100 active:scale-95 transition-transform">
+          <SlidersHorizontal size={20} className="text-slate-600" />
+        </button>
+      </div>
+
       <div className="flex flex-col lg:flex-row h-full gap-6">
         
         {/* Left Side: List */}
-        <div className="w-full lg:w-[35%] xl:w-[30%] flex flex-col h-full overflow-hidden bg-white rounded-3xl border border-slate-100 shadow-[0_2px_20px_rgb(0,0,0,0.04)] p-6">
+        <div className="hidden lg:flex w-full lg:w-[35%] xl:w-[30%] flex-col h-full overflow-hidden bg-white rounded-3xl border border-slate-100 shadow-[0_2px_20px_rgb(0,0,0,0.04)] p-6">
           <div className="mb-5 shrink-0">
             <h2 className="text-[24px] font-bold text-slate-900 tracking-tight">Top Neighborhoods</h2>
             <p className="text-slate-500 text-sm">19,000+ neighborhoods analyzed</p>
@@ -242,13 +251,13 @@ const ExploreMap = ({ neighborhoods }) => {
           </MapContainer>
           
           {/* Floating hint badge */}
-          <div className="absolute bottom-6 left-6 bg-white/95 backdrop-blur-xl rounded-full px-4 py-2 shadow-md border border-white z-[1000] flex items-center gap-2">
+          <div className="hidden lg:flex absolute bottom-6 left-6 bg-white/95 backdrop-blur-xl rounded-full px-4 py-2 shadow-md border border-white z-[20] items-center gap-2">
             <MapPin size={14} className="text-red-500" />
             <span className="text-[11px] font-bold text-slate-600">Click anywhere on the map to drop a pin</span>
           </div>
           
-          {/* Floating Controls: Filter List (Top Left) */}
-          <div className="absolute top-6 left-6 bg-white/95 backdrop-blur-xl rounded-2xl p-5 shadow-[0_8px_30px_rgb(0,0,0,0.08)] border border-white flex flex-col gap-3.5 min-w-[200px] z-[1000]">
+          {/* Floating Controls: Filter List (Top Left) - Hidden on Mobile */}
+          <div className="hidden lg:flex absolute top-6 left-6 bg-white/95 backdrop-blur-xl rounded-2xl p-5 shadow-[0_8px_30px_rgb(0,0,0,0.08)] border border-white flex flex-col gap-3.5 min-w-[200px] z-[20]">
             {['Show Scores', 'Tech Parks', 'Business Districts', 'Premium Areas'].map((label, i) => (
               <label key={i} className="flex items-center gap-3 cursor-pointer group">
                 <div className="w-[18px] h-[18px] rounded-[4px] bg-[#11B573] flex items-center justify-center text-white shadow-sm">
@@ -264,7 +273,7 @@ const ExploreMap = ({ neighborhoods }) => {
           </div>
 
           {/* Floating Controls: Zoom (Top Right) */}
-          <div className="absolute top-6 right-6 bg-white/95 backdrop-blur-xl rounded-xl shadow-[0_8px_30px_rgb(0,0,0,0.08)] border border-white flex flex-col overflow-hidden z-[1000]">
+          <div className="absolute top-4 right-4 lg:top-6 lg:right-6 bg-white/95 backdrop-blur-xl rounded-xl shadow-[0_8px_30px_rgb(0,0,0,0.08)] border border-white flex flex-col overflow-hidden z-[20]">
             <button 
               onClick={handleZoomIn}
               className="p-2.5 text-slate-600 hover:bg-slate-50 hover:text-slate-900 border-b border-slate-100 transition-colors"
@@ -286,10 +295,12 @@ const ExploreMap = ({ neighborhoods }) => {
             </button>
           </div>
 
-          {/* Floating Legend (Bottom Right) */}
-          <div className="absolute bottom-6 right-6 bg-white/95 backdrop-blur-xl rounded-2xl p-5 shadow-[0_8px_30px_rgb(0,0,0,0.12)] border border-white min-w-[200px] z-[1000]">
-            <h4 className="font-bold text-slate-900 text-[13px] mb-4 tracking-tight">Score Range</h4>
-            <div className="flex flex-col gap-3">
+          {/* Floating Legend (Bottom) */}
+          <div className="absolute bottom-4 left-4 right-4 lg:bottom-6 lg:right-6 lg:left-auto bg-white/95 backdrop-blur-xl rounded-2xl p-4 lg:p-5 shadow-[0_8px_30px_rgb(0,0,0,0.12)] border border-white z-[20]">
+            <h4 className="font-bold text-slate-900 text-[12px] lg:text-[13px] mb-3 lg:mb-4 tracking-tight">Score Range</h4>
+            
+            {/* Desktop Legend (Vertical) */}
+            <div className="hidden lg:flex flex-col gap-3">
               {[
                 { range: '90-100', label: 'Excellent', color: 'bg-[#0F2F20]' },
                 { range: '75-89', label: 'Very Good', color: 'bg-[#11B573]' },
@@ -303,6 +314,31 @@ const ExploreMap = ({ neighborhoods }) => {
                   <span className="text-xs text-slate-500 font-medium">{item.label}</span>
                 </div>
               ))}
+            </div>
+
+            {/* Mobile Legend (Horizontal + Hint) */}
+            <div className="lg:hidden flex flex-col">
+              <div className="flex items-center justify-between">
+                {[
+                  { range: '90-100', label: 'Excellent', color: 'bg-[#0F2F20]' },
+                  { range: '75-89', label: 'Very Good', color: 'bg-[#11B573]' },
+                  { range: '60-74', label: 'Good', color: 'bg-amber-400' },
+                  { range: '40-59', label: 'Average', color: 'bg-orange-500' },
+                  { range: '0-39', label: 'Below Avg', color: 'bg-red-500' },
+                ].map((item, i) => (
+                  <div key={i} className="flex flex-col items-center gap-1.5">
+                    <div className="flex items-center gap-1">
+                      <div className={`w-2 h-2 rounded-full ${item.color} shadow-sm`} />
+                      <span className="text-[10px] font-bold text-slate-700 leading-none">{item.range}</span>
+                    </div>
+                    <span className="text-[9px] text-slate-500 font-medium leading-none">{item.label}</span>
+                  </div>
+                ))}
+              </div>
+              <div className="pt-3 mt-3 border-t border-slate-100 flex items-center justify-center gap-2">
+                <MapPin size={12} className="text-red-500" />
+                <span className="text-[10px] font-medium text-slate-600">Tap anywhere on the map to see details</span>
+              </div>
             </div>
           </div>
 

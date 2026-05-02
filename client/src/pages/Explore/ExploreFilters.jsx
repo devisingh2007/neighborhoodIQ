@@ -1,14 +1,16 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { ChevronDown, Grid, Map as MapIcon, SlidersHorizontal, Check } from 'lucide-react';
+import { ChevronDown, Grid, Map as MapIcon, SlidersHorizontal, Check, Search } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 const ExploreFilters = ({ viewMode, setViewMode }) => {
   return (
-    <div className="bg-white border-b border-slate-100 sticky top-[72px] z-30 shadow-sm">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+    <div className="bg-white border-b border-slate-100 sticky top-[64px] md:top-[72px] z-30 shadow-sm">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 md:py-4">
         <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4">
           
-          <div className="flex flex-wrap items-center gap-3">
+          <div className="flex flex-col lg:flex-row items-stretch lg:items-center gap-3 w-full lg:w-auto">
+            {/* Filter Dropdowns Grid */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:flex lg:flex-wrap items-center gap-2 md:gap-3">
             {/* Filter Dropdowns */}
             <FilterDropdown 
               label="All Cities" 
@@ -26,14 +28,21 @@ const ExploreFilters = ({ viewMode, setViewMode }) => {
               value="Overall Score" 
               options={['Overall Score', 'Price (High to Low)', 'Price (Low to High)', 'Highest Growth', 'Best AQI']}
             />
-            <FilterDropdown 
-              label="Min Score" 
-              value="Any Score" 
-              options={['Any Score', '90+', '80+', '70+', '60+']}
-            />
+              <FilterDropdown 
+                label="Min Score" 
+                value="Any Score" 
+                options={['Any Score', '90+', '80+', '70+', '60+']}
+              />
+            </div>
+
+            {/* Mobile Explore Button */}
+            <button className="lg:hidden w-full py-3.5 bg-[#11B573] text-white rounded-xl font-bold flex items-center justify-center gap-2 shadow-lg shadow-emerald-700/20 active:scale-[0.98] transition-transform text-sm">
+              <Search size={18} />
+              Explore Neighborhoods
+            </button>
           </div>
 
-          <div className="flex items-center gap-4 border-l border-slate-200 pl-4 ml-auto lg:ml-0">
+          <div className="flex items-center justify-center lg:justify-end gap-4 border-t lg:border-t-0 lg:border-l border-slate-100 lg:border-slate-200 pt-3 lg:pt-0 lg:pl-4">
             <span className="text-sm font-medium text-slate-500">View as</span>
             <div className="flex bg-slate-50 p-1 rounded-lg border border-slate-100">
               <button 
@@ -87,7 +96,7 @@ const FilterDropdown = ({ label, value, icon, options = [] }) => {
     <div className="relative" ref={dropdownRef}>
       <button 
         onClick={() => setIsOpen(!isOpen)}
-        className={`flex items-center justify-between gap-6 px-4 py-2.5 bg-white border rounded-xl transition-all duration-300 group min-w-[160px] ${
+        className={`flex items-center justify-between gap-6 px-4 py-2.5 bg-white border rounded-xl transition-all duration-300 group w-full lg:min-w-[160px] ${
           isOpen ? 'border-brand-400 shadow-md ring-4 ring-brand-50' : 'border-slate-200 hover:border-brand-300 hover:shadow-sm'
         }`}
       >

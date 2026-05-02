@@ -104,25 +104,25 @@ const topAreas = [
 const TopAreas = () => {
   return (
     <section className="section-container bg-gray-50/50">
-      <div className="flex justify-between items-end mb-12">
+      <div className="flex justify-between items-end mb-8 md:mb-12">
         <div>
-          <h2 className="text-3xl md:text-4xl font-serif mb-4">Top Neighborhoods</h2>
-          <p className="text-gray-500 text-lg">Ranked by composite neighborhood intelligence score.</p>
+          <h2 className="text-3xl md:text-4xl font-serif mb-2 md:mb-4">Top Neighborhoods</h2>
+          <p className="text-gray-500 text-base md:text-lg">Ranked by composite neighborhood intelligence score.</p>
         </div>
-        <button className="hidden md:flex items-center text-brand-700 font-bold hover:text-brand-800 transition-colors">
-          See All Rankings <ArrowRight size={20} className="ml-2" />
+        <button className="flex items-center text-brand-700 text-sm md:text-base font-bold hover:text-brand-800 transition-colors">
+          See All Rankings <ArrowRight size={16} className="ml-1 md:ml-2" />
         </button>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-8">
         {topAreas.map((area) => (
           <motion.div
             key={area.id}
             whileHover={{ y: -8 }}
-            className="neighborhood-card group"
+            className="neighborhood-card group flex flex-row md:flex-col overflow-hidden"
           >
             {/* Area Image */}
-            <div className="aspect-video bg-gray-100 relative overflow-hidden">
+            <div className="w-[110px] md:w-full shrink-0 md:aspect-video bg-gray-100 relative">
               {area.image && (
                 <img
                   src={area.image}
@@ -131,41 +131,41 @@ const TopAreas = () => {
                 />
               )}
               <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent" />
-              <div className="absolute top-4 right-4 z-10">
-                <div className={`px-3 py-1 rounded-full font-bold text-lg shadow-lg flex items-center space-x-1 ${area.color}`}>
-                  <Star size={16} className="fill-current" />
+              <div className="absolute top-2 right-2 md:top-4 md:right-4 z-10">
+                <div className={`px-2 py-0.5 md:px-3 md:py-1 rounded-full font-bold text-xs md:text-lg shadow-lg flex items-center space-x-1 ${area.color}`}>
+                  <Star size={12} className="fill-current md:w-4 md:h-4" />
                   <span>{area.score}</span>
                 </div>
               </div>
             </div>
 
-            <div className="p-6">
-              <div className="flex justify-between items-start mb-4">
-                <div>
-                  <h3 className="text-xl font-serif text-gray-900 group-hover:text-brand-700 transition-colors capitalize">{area.name}</h3>
-                  <p className="text-gray-500 font-medium">{area.city}</p>
+            <div className="p-3 md:p-6 flex-grow flex flex-col justify-center min-w-0">
+              <div className="flex justify-between items-start mb-2 md:mb-4">
+                <div className="min-w-0 pr-2">
+                  <h3 className="text-base md:text-xl font-serif text-gray-900 group-hover:text-brand-700 transition-colors capitalize truncate">{area.name}</h3>
+                  <p className="text-gray-500 text-xs md:text-sm font-medium">{area.city}</p>
                 </div>
-                <div className={`text-xs font-bold px-2 py-1 rounded uppercase tracking-wider ${area.color}`}>
+                <div className={`text-[9px] md:text-xs font-bold px-1.5 py-0.5 md:px-2 md:py-1 rounded uppercase tracking-wider shrink-0 ${area.color}`}>
                   {area.grade}
                 </div>
               </div>
 
-              <div className="grid grid-cols-3 gap-2 pt-4 border-t border-gray-100 mt-4">
+              <div className="grid grid-cols-3 gap-1 md:gap-2 pt-2 md:pt-4 border-t border-gray-100 mt-2 md:mt-4">
                 <div className="text-center">
-                  <div className="text-xs text-gray-400 uppercase mb-1">Crime</div>
-                  <div className="text-sm font-bold text-gray-700">{area.crime}</div>
+                  <div className="text-[9px] md:text-xs text-gray-400 uppercase mb-0.5 md:mb-1">Crime</div>
+                  <div className="text-xs md:text-sm font-bold text-gray-700">{area.crime}</div>
                 </div>
                 <div className="text-center border-x border-gray-100">
-                  <div className="text-xs text-gray-400 uppercase mb-1">Health</div>
-                  <div className="text-sm font-bold text-gray-700">{area.hospital}</div>
+                  <div className="text-[9px] md:text-xs text-gray-400 uppercase mb-0.5 md:mb-1">Health</div>
+                  <div className="text-xs md:text-sm font-bold text-gray-700">{area.hospital}</div>
                 </div>
                 <div className="text-center">
-                  <div className="text-xs text-gray-400 uppercase mb-1">Commute</div>
-                  <div className="text-sm font-bold text-gray-700">{area.comm}</div>
+                  <div className="text-[9px] md:text-xs text-gray-400 uppercase mb-0.5 md:mb-1">Commute</div>
+                  <div className="text-xs md:text-sm font-bold text-gray-700">{area.comm}</div>
                 </div>
               </div>
 
-              <button className="w-full mt-6 py-3 bg-brand-50 text-brand-700 font-bold rounded-lg hover:bg-brand-700 hover:text-white transition-all duration-300">
+              <button className="w-full mt-3 md:mt-6 py-1.5 md:py-3 bg-brand-50 text-brand-700 font-bold rounded md:rounded-lg text-xs md:text-base hover:bg-brand-700 hover:text-white transition-all duration-300">
                 View Details
               </button>
             </div>

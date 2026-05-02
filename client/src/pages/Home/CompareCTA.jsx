@@ -62,7 +62,7 @@ const ComparisonCard = ({ image, name, score, color, delay, initialX, initialRot
 
 const CompareCTA = () => {
   return (
-    <section className="max-w-[1536px] mx-auto px-4 sm:px-6 lg:px-8 py-16 relative overflow-hidden">
+    <section className="hidden md:block max-w-[1536px] mx-auto px-4 sm:px-6 lg:px-8 py-16 relative overflow-hidden">
       <motion.div
         initial={{ opacity: 0, y: 40 }}
         whileInView={{ opacity: 1, y: 0 }}

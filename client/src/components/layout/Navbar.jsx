@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
-import { Search, Menu, X, Building2 } from 'lucide-react';
+import { Search, Menu, X, Landmark } from 'lucide-react';
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -27,31 +27,35 @@ const Navbar = () => {
   }, []);
 
   const navLinks = [
-    { name: 'Home', path: '/' },
+    { name: 'Home', path: '/home' },
     { name: 'Explore', path: '/explore' },
     { name: 'Compare', path: '/compare' },
-    { name: 'Methodology', path: '/methodology' },
     { name: 'About', path: '/about' },
   ];
 
   const isActive = (path) => {
     if (path === '/' && location.pathname !== '/') return false;
-    return location.pathname.startsWith(path);
+    return location.pathname === path || location.pathname.startsWith(path + '/');
   };
+
+  const isTransparentPage = location.pathname === '/' || location.pathname === '/explore';
+  const isTransparent = !isScrolled && isTransparentPage;
 
   return (
     <nav className={`fixed w-full z-50 transition-all duration-300 ${
-      isScrolled ? 'bg-white/90 backdrop-blur-md shadow-sm py-3' : 'bg-white py-4 shadow-sm'
-    } border-b border-slate-100`}>
+      isScrolled ? 'bg-white/90 backdrop-blur-md shadow-sm py-3 border-b border-slate-100' : 
+      isTransparent ? 'bg-transparent py-4 border-b border-white/10' : 
+      'bg-white py-4 shadow-sm border-b border-slate-100'
+    }`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center">
           {/* Logo */}
           <Link to="/" className="flex items-center space-x-2 group shrink-0">
-            <div className="p-1.5 rounded-lg bg-emerald-50 text-[#11B573] transition-colors group-hover:bg-emerald-100">
-              <Building2 size={24} strokeWidth={2.5} />
+            <div className="p-1.5 rounded-lg bg-[#11B573] text-white transition-transform group-hover:scale-105">
+              <Landmark size={24} strokeWidth={2} />
             </div>
-            <span className="text-xl font-bold tracking-tight text-slate-900">
-              Neighborhood<span className="text-[#11B573]">IQ</span>
+            <span className={`text-xl font-bold tracking-tight ${isTransparent ? 'text-white' : 'text-slate-900'}`}>
+              Neighborhood<span className={isTransparent ? 'text-white' : 'text-[#11B573]'}>IQ</span>
             </span>
           </Link>
 
@@ -62,7 +66,9 @@ const Navbar = () => {
                 key={link.name}
                 to={link.path}
                 className={`text-sm font-bold transition-all relative py-2 ${
-                  isActive(link.path) ? 'text-slate-900' : 'text-slate-500 hover:text-[#11B573]'
+                  isActive(link.path) 
+                    ? (isTransparent ? 'text-white' : 'text-slate-900') 
+                    : (isTransparent ? 'text-white/80 hover:text-white' : 'text-slate-500 hover:text-[#11B573]')
                 }`}
               >
                 {link.name}
@@ -77,9 +83,13 @@ const Navbar = () => {
           <div className="hidden md:flex items-center space-x-6">
             {/* Search Bar */}
             <div className="relative group">
-              <div className="flex items-center px-4 py-2 rounded-full bg-slate-50 border border-slate-100 transition-all group-focus-within:bg-white group-focus-within:border-emerald-500 group-focus-within:shadow-sm w-64 lg:w-72">
+              <div className={`flex items-center px-4 py-2 rounded-full border transition-all group-focus-within:bg-white group-focus-within:border-emerald-500 group-focus-within:shadow-sm w-64 lg:w-72 ${
+                isTransparent ? 'bg-white/10 border-white/20' : 'bg-slate-50 border-slate-100'
+              }`}>
                 <button onClick={handleNavSearch} className="shrink-0 mr-2.5">
-                  <Search size={16} className="text-slate-400 group-focus-within:text-emerald-500 hover:text-[#11B573] transition-colors" />
+                  <Search size={16} className={`transition-colors group-focus-within:text-emerald-500 ${
+                    isTransparent ? 'text-white/70 hover:text-white' : 'text-slate-400 hover:text-[#11B573]'
+                  }`} />
                 </button>
                 <input
                   type="text"
@@ -87,7 +97,9 @@ const Navbar = () => {
                   value={navSearch}
                   onChange={(e) => setNavSearch(e.target.value)}
                   onKeyDown={(e) => e.key === 'Enter' && handleNavSearch()}
-                  className="bg-transparent border-none outline-none text-sm w-full placeholder:text-slate-400 text-slate-700"
+                  className={`bg-transparent border-none outline-none text-sm w-full group-focus-within:text-slate-700 group-focus-within:placeholder:text-slate-400 ${
+                    isTransparent ? 'text-white placeholder:text-white/60' : 'text-slate-700 placeholder:text-slate-400'
+                  }`}
                 />
               </div>
             </div>
@@ -105,7 +117,7 @@ const Navbar = () => {
           <div className="lg:hidden">
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="p-2 text-slate-600 hover:text-emerald-600 transition-colors"
+              className={`p-2 transition-colors ${isTransparent ? 'text-white hover:text-white/80' : 'text-slate-600 hover:text-emerald-600'}`}
             >
               {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
             </button>

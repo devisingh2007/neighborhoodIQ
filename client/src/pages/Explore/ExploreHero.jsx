@@ -4,7 +4,7 @@ import { TrendingUp, PieChart, List } from 'lucide-react';
 
 const ExploreHero = () => {
   return (
-    <section className="relative min-h-[600px] flex items-center pt-24 overflow-hidden bg-slate-950">
+    <section className="relative min-h-[600px] flex items-center pt-28 pb-16 lg:py-0 lg:pt-24 overflow-hidden bg-slate-950">
       {/* Background Image */}
       <div className="absolute inset-0 z-0">
         <div className="absolute inset-0 bg-gradient-to-r from-slate-950 via-slate-950/80 to-transparent z-10" />
@@ -39,8 +39,8 @@ const ExploreHero = () => {
           </motion.div>
         </div>
 
-        {/* Floating Stats Grid - Bento Box Style */}
-        <div className="absolute right-8 top-1/2 -translate-y-1/2 hidden lg:grid grid-cols-2 gap-3 w-[360px]">
+        {/* Stats Grid - Bento Box Style */}
+        <div className="mt-10 lg:mt-0 grid grid-cols-2 gap-3 w-full max-w-[360px] mx-auto lg:mx-0 lg:absolute lg:right-8 lg:top-1/2 lg:-translate-y-1/2">
           
           {/* Top wide card */}
           <motion.div

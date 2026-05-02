@@ -4,6 +4,7 @@ import ExploreFilters from './ExploreFilters';
 import NeighborhoodCard from './NeighborhoodCard';
 import IntelligenceSection from './IntelligenceSection';
 import ExploreMap from './ExploreMap';
+import { ArrowRight } from 'lucide-react';
 
 const neighborhoodData = [
   {
@@ -153,15 +154,18 @@ const Explore = () => {
       <ExploreFilters viewMode={viewMode} setViewMode={setViewMode} />
 
       {viewMode === 'grid' ? (
-        <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-          <div className="flex justify-between items-end mb-8">
+        <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-12">
+          <div className="flex justify-between items-center mb-6 md:mb-8">
             <div>
-              <h2 className="text-[28px] font-bold text-slate-900 tracking-tight">Top Neighborhoods</h2>
-              <p className="text-slate-500 text-sm font-medium">Curated by overall score this quarter</p>
+              <h2 className="text-[20px] md:text-[28px] font-bold text-slate-900 tracking-tight leading-tight">Top Neighborhoods</h2>
+              <p className="text-slate-500 text-[11px] md:text-sm font-medium">Curated by overall score this quarter</p>
             </div>
+            <button className="text-[#11B573] text-xs md:text-sm font-bold flex items-center gap-1 hover:underline transition-all">
+              View All <ArrowRight size={14} className="md:w-4 md:h-4" />
+            </button>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-9 gap-4">
+          <div className="grid grid-cols-1 lg:grid-cols-9 gap-3 md:gap-4">
             {neighborhoodData.slice(0, 7).map((neighborhood, index) => {
               const isFeatured = index === 0;
               return (

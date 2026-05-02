@@ -10,22 +10,21 @@ const AtAGlance = () => {
   ];
 
   return (
-    <div className="bg-white rounded-[2rem] p-6 shadow-sm border border-slate-100 mb-10 flex flex-wrap lg:flex-nowrap items-center gap-8">
-      <div className="lg:w-32 shrink-0">
-        <h3 className="font-bold text-slate-900 text-lg leading-tight mb-1">At a</h3>
-        <h3 className="font-bold text-slate-900 text-lg">Glance</h3>
+    <div className="bg-white rounded-[2rem] p-6 shadow-sm border border-slate-100 mb-10 flex flex-col lg:flex-row items-center gap-6 lg:gap-8">
+      <div className="w-full lg:w-32 shrink-0 text-center lg:text-left">
+        <h3 className="font-bold text-slate-900 text-lg leading-tight mb-1">At a Glance</h3>
       </div>
       
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 w-full">
+      <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 w-full">
         {highlights.map((item, i) => (
-          <div key={i} className="flex items-center gap-4 group cursor-default">
-            <div className={`w-12 h-12 rounded-full flex items-center justify-center shrink-0 ${item.bg}`}>
-              {item.icon}
+          <div key={i} className="flex flex-col md:flex-row items-center gap-3 md:gap-4 group cursor-default text-center md:text-left">
+            <div className={`w-10 h-10 md:w-12 md:h-12 rounded-full flex items-center justify-center shrink-0 ${item.bg}`}>
+              {React.cloneElement(item.icon, { size: 20, className: "md:w-6 md:h-6" })}
             </div>
             <div>
-              <p className="text-slate-400 text-[11px] font-bold uppercase tracking-wider mb-0.5">{item.label}</p>
-              <h4 className="font-bold text-slate-900 text-[14px] leading-tight mb-0.5">{item.name}</h4>
-              <p className="text-slate-500 text-[12px] font-medium">Score: <span className="font-bold text-slate-700">{item.score}</span></p>
+              <p className="text-slate-400 text-[9px] md:text-[11px] font-bold uppercase tracking-wider mb-0.5">{item.label}</p>
+              <h4 className="font-bold text-slate-900 text-[12px] md:text-[14px] leading-tight mb-0.5">{item.name}</h4>
+              <p className="text-slate-500 text-[10px] md:text-[12px] font-medium">Score: <span className="font-bold text-slate-700">{item.score}</span></p>
             </div>
           </div>
         ))}

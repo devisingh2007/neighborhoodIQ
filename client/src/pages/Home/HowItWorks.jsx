@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef, useState } from 'react';
 import { ShieldAlert, Wind, Train, GraduationCap, HeartPulse, Sparkles } from 'lucide-react';
 import { motion } from 'framer-motion';
 
@@ -42,6 +42,19 @@ const factors = [
 ];
 
 const HowItWorks = () => {
+  const containerRef = useRef(null);
+  const [activeIndex, setActiveIndex] = useState(0);
+
+  const handleScroll = () => {
+    if (containerRef.current) {
+      const scrollPosition = containerRef.current.scrollLeft;
+      const cardWidth = containerRef.current.children[0].offsetWidth;
+      // Calculate which card is most visible
+      const index = Math.round(scrollPosition / cardWidth);
+      setActiveIndex(index);
+    }
+  };
+
   return (
     <section className="section-container">
       <div className="text-center mb-16">
@@ -51,12 +64,17 @@ const HowItWorks = () => {
         </p>
       </div>
 
-      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
+      <div 
+        ref={containerRef}
+        onScroll={handleScroll}
+        className="flex overflow-x-auto snap-x snap-mandatory gap-4 md:grid md:grid-cols-3 lg:grid-cols-6 md:gap-6 pb-6 md:pb-0 custom-scrollbar md:overflow-visible"
+        style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+      >
         {factors.map((factor, index) => (
           <motion.div
             key={index}
             whileHover={{ y: -5, boxShadow: '0 10px 25px -5px rgba(0, 0, 0, 0.1)' }}
-            className={`flex flex-col items-center text-center p-8 rounded-2xl border transition-all cursor-default ${factor.color} bg-white`}
+            className={`snap-center shrink-0 w-[80vw] sm:w-[300px] md:w-auto flex flex-col items-center text-center p-8 rounded-2xl border transition-all cursor-default ${factor.color} bg-white`}
           >
             <div className={`p-4 rounded-xl mb-6 transition-colors ${factor.color}`}>
               <factor.icon size={32} />
@@ -68,8 +86,29 @@ const HowItWorks = () => {
           </motion.div>
         ))}
       </div>
+
+      {/* Mobile Dots Indicator */}
+      <div className="flex justify-center items-center gap-2 mt-4 md:hidden">
+        {factors.map((_, idx) => (
+          <div 
+            key={idx} 
+            className={`h-1.5 rounded-full transition-all duration-300 ${
+              activeIndex === idx ? 'w-4 bg-brand-500' : 'w-1.5 bg-gray-200'
+            }`}
+          />
+        ))}
+      </div>
     </section>
   );
 };
+
+// Add styles for hiding scrollbar directly here if index.css isn't targeted
+const style = document.createElement('style');
+style.innerHTML = `
+  .custom-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+`;
+document.head.appendChild(style);
 
 export default HowItWorks;
