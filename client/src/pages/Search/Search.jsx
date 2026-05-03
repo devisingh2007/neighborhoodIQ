@@ -139,12 +139,15 @@ const defaultFilters = {
 // ─── Search Page ──────────────────────────────────────────────────────────────
 const Search = () => {
   const [searchParams] = useSearchParams();
-  const [searchQuery, setSearchQuery] = useState('');
+  const pathPart = window.location.pathname.split('/').pop();
+  const cityFromUrl = pathPart !== 'search' ? decodeURIComponent(pathPart) : '';
+
+  const [searchQuery, setSearchQuery] = useState(cityFromUrl);
   const [filters, setFilters] = useState(defaultFilters);
   const [appliedFilters, setAppliedFilters] = useState(defaultFilters);
   const [sortBy, setSortBy] = useState('Best Match');
   const [viewMode, setViewMode] = useState('list');
-  const [cityChip, setCityChip] = useState('');
+  const [cityChip, setCityChip] = useState(cityFromUrl);
   const [initialFocus, setInitialFocus] = useState(null);
 
   const handleLocate = (neighborhood) => {
@@ -152,11 +155,12 @@ const Search = () => {
     setViewMode('map');
   };
 
-  // Sync search query from URL ?q= param (set by navbar)
   useEffect(() => {
-    const q = searchParams.get('q') || '';
-    setSearchQuery(q);
-    setCityChip(q);
+    const q = searchParams.get('q');
+    if (q) {
+      setSearchQuery(q);
+      setCityChip(q);
+    }
   }, [searchParams]);
 
   // Apply filters

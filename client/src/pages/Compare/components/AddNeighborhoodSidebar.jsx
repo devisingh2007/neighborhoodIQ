@@ -10,11 +10,11 @@ const AddNeighborhoodSidebar = ({ isOpen, onClose, onAdd, alreadySelected }) => 
   const recentSearches = ['Powai, Mumbai', 'Bandra West, Mumbai', 'Whitefield, Bangalore'];
 
   const popularNeighborhoods = [
-    { id: 5, name: 'Powai', city: 'Mumbai', score: 88, price: '₹22K/sqft', aqi: 'Moderate', image: 'https://images.unsplash.com/photo-1595658658481-d53d3f999875?q=80&w=2070&auto=format&fit=crop' },
-    { id: 4, name: 'Bandra West', city: 'Mumbai', score: 87, price: '₹45K/sqft', aqi: 'Good', image: 'https://images.unsplash.com/photo-1596743444221-6015070b23e1?q=80&w=1000&auto=format&fit=crop' },
-    { id: 2, name: 'Whitefield', city: 'Bangalore', score: 86, price: '₹15K/sqft', aqi: 'Good', image: 'https://images.unsplash.com/photo-1506146332389-18140dc7b2fb?q=80&w=1000&auto=format&fit=crop' },
-    { id: 1, name: 'Koramangala', city: 'Bangalore', score: 84, price: '₹18K/sqft', aqi: 'Good', image: 'https://images.unsplash.com/photo-1531219432768-9f540ce91ef3?q=80&w=1000&auto=format&fit=crop' },
-    { id: 6, name: 'Dwarka', city: 'Delhi', score: 82, price: '₹12K/sqft', aqi: 'Moderate', image: 'https://images.unsplash.com/photo-1515165597734-7b798038d618?q=80&w=1000&auto=format&fit=crop' },
+    { id: 5, name: 'Powai', city: 'Mumbai', score: 88, price: '₹22K/sqft', aqi: 'Moderate', image: '/images/neighborhoods/powai.png' },
+    { id: 4, name: 'Bandra West', city: 'Mumbai', score: 87, price: '₹45K/sqft', aqi: 'Good', image: '/images/neighborhoods/bandra.png' },
+    { id: 2, name: 'Whitefield', city: 'Bangalore', score: 86, price: '₹15K/sqft', aqi: 'Good', image: '/images/neighborhoods/for_desbord.png' },
+    { id: 1, name: 'Koramangala', city: 'Bangalore', score: 84, price: '₹18K/sqft', aqi: 'Good', image: '/images/neighborhoods/koramangala.png' },
+    { id: 6, name: 'Dwarka', city: 'Delhi', score: 82, price: '₹12K/sqft', aqi: 'Moderate', image: '/images/neighborhoods/dwarka.png' },
   ];
 
   const handleToggleQueue = (neighborhood) => {

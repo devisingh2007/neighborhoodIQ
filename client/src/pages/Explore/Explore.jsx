@@ -20,7 +20,7 @@ const neighborhoodData = [
     trend: 'Rising',
     tags: ['Tech Parks', 'IT Corridor'],
     scoreBorder: 'border-[#11B573]',
-    image: '/images/neighborhoods/whitefield.png',
+    image: '/images/Home page/mumbai.png',
     lat: 19.0330,
     lng: 73.0297
   },
@@ -145,8 +145,12 @@ const neighborhoodData = [
   }
 ];
 
+import { useNavigate } from 'react-router-dom';
+
 const Explore = () => {
-  const [viewMode, setViewMode] = useState('map');
+  const navigate = useNavigate();
+  const viewMode = window.location.pathname.includes('grid') ? 'grid' : 'map';
+  const setViewMode = (mode) => navigate(`/explore/${mode}`);
 
   return (
     <div className="min-h-screen bg-white">
