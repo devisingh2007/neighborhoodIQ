@@ -1,0 +1,182 @@
+{
+	"info": {
+		"_postman_id": "c6a6f68c-4a3b-47e2-a7f4-d757d5e4b9f2",
+		"name": "NeighborhoodIQ API",
+		"description": "API documentation for NeighborhoodIQ. Features intelligence scoring aggregated from FBI Crime Data, OpenAQ, Google Places, OpenStreetMap, and EPA SDWIS.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "1. Authentication",
+			"item": [
+				{
+					"name": "Login",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"user@example.com\",\n    \"password\": \"securepassword\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/auth/login",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"auth",
+								"login"
+							]
+						}
+					}
+				}
+			]
+		},
+		{
+			"name": "2. Intelligence Metrics",
+			"item": [
+				{
+					"name": "Get Area Safety (FBI Crime Data)",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/metrics/safety/:slug",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"metrics",
+								"safety",
+								":slug"
+							],
+							"variable": [
+								{
+									"key": "slug",
+									"value": "whitefield"
+								}
+							]
+						},
+						"description": "Weight: 30%. Retrieves safety statistics sourced from FBI Crime Data and local police APIs."
+					}
+				},
+				{
+					"name": "Get Area AQI (OpenAQ)",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/metrics/aqi/:slug",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"metrics",
+								"aqi",
+								":slug"
+							],
+							"variable": [
+								{
+									"key": "slug",
+									"value": "whitefield"
+								}
+							]
+						},
+						"description": "Weight: 20%. Retrieves air quality data sourced from OpenAQ API."
+					}
+				},
+				{
+					"name": "Get Healthcare Density (Google Places)",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/metrics/healthcare/:slug",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"metrics",
+								"healthcare",
+								":slug"
+							],
+							"variable": [
+								{
+									"key": "slug",
+									"value": "whitefield"
+								}
+							]
+						},
+						"description": "Weight: 15%. Retrieves hospital and clinic density using Google Places."
+					}
+				},
+				{
+					"name": "Get Infrastructure (OpenStreetMap)",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/metrics/infrastructure/:slug",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"metrics",
+								"infrastructure",
+								":slug"
+							],
+							"variable": [
+								{
+									"key": "slug",
+									"value": "whitefield"
+								}
+							]
+						},
+						"description": "Weight: 10%. Retrieves transit options and road quality from OSM."
+					}
+				}
+			]
+		},
+		{
+			"name": "3. Areas",
+			"item": [
+				{
+					"name": "Get Neighborhood Profile",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/areas/:slug",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"areas",
+								":slug"
+							],
+							"variable": [
+								{
+									"key": "slug",
+									"value": "whitefield"
+								}
+							]
+						},
+						"description": "Retrieves the aggregated score (out of 100) combining all 7 metrics (Safety, AQI, Healthcare, Education, Infrastructure, Water, Walkability)."
+					}
+				}
+			]
+		}
+	],
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "http://localhost:5000/api/v1",
+			"type": "string"
+		}
+	]
+}

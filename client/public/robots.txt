@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+Disallow: /profile
+Disallow: /dashboard
+Disallow: /settings
+Disallow: /api/
+
+Sitemap: https://neighborhoodiq.netlify.app/sitemap.xml

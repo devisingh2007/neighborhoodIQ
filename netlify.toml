@@ -1,0 +1,43 @@
+# Netlify Configuration for NeighborhoodIQ
+
+[build]
+  # Directory to deploy
+  publish = "client/dist"
+  
+  # Build command
+  command = "cd client && npm install && npm run build"
+  
+  # Functions directory (if using serverless functions)
+  functions = "netlify/functions"
+
+# Environment variables
+[build.environment]
+  NODE_VERSION = "18.17.1"
+  NPM_VERSION = "9.6.7"
+
+# Redirects for SPA routing
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+
+# Headers for better security and performance
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "DENY"
+    X-Content-Type-Options = "nosniff"
+    X-XSS-Protection = "1; mode=block"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+
+# Cache headers for static assets
+[[headers]]
+  for = "/assets/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+# Don't cache HTML files
+[[headers]]
+  for = "/*.html"
+  [headers.values]
+    Cache-Control = "no-cache, no-store, must-revalidate"
