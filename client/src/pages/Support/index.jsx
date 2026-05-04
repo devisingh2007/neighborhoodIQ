@@ -1,0 +1,206 @@
+import React, { useState } from 'react';
+import { motion } from 'framer-motion';
+import { 
+  Heart, 
+  BarChart3, 
+  ShieldCheck, 
+  Clock, 
+  FileEdit, 
+  Activity, 
+  HelpCircle, 
+  Briefcase, 
+  Rocket, 
+  ChevronRight,
+  Upload,
+  User,
+  Mail,
+  Phone,
+  MessageSquare,
+  FileText,
+  Zap,
+  Database,
+  Code,
+  CheckCircle2,
+  AlertCircle
+} from 'lucide-react';
+
+const Support = () => {
+  const [formData, setFormData] = useState({
+    requestType: 'Report Incorrect Data',
+    priority: 'Medium',
+    shortSummary: '',
+    metric: '',
+    location: '',
+    city: '',
+    issueDescription: '',
+    dateObserved: '',
+    dataSource: '',
+    name: '',
+    email: '',
+    phone: '',
+    reachOutMethod: 'Email',
+    additionalDetails: '',
+    intent: 'Report Incorrect Data'
+  });
+
+  const features = [
+    {
+      icon: <Heart className="text-[#11B573]" size={24} />,
+      title: "We care",
+      desc: "Your feedback helps us improve"
+    },
+    {
+      icon: <BarChart3 className="text-[#11B573]" size={24} />,
+      title: "Data-driven",
+      desc: "Powered by 6+ trusted data sources"
+    },
+    {
+      icon: <ShieldCheck className="text-[#11B573]" size={24} />,
+      title: "Secure & Private",
+      desc: "Your data is safe with us"
+    },
+    {
+      icon: <Clock className="text-[#11B573]" size={24} />,
+      title: "Quick Response",
+      desc: "We usually reply within 24 hours"
+    }
+  ];
+
+  const systemStatus = [
+    { name: "Data Sync Services", status: "Operational" },
+    { name: "API Services", status: "Operational" },
+    { name: "Database (MongoDB)", status: "Operational" },
+    { name: "Cache (Redis)", status: "Operational" },
+    { name: "External Data Sources", status: "Operational" }
+  ];
+
+  const faqs = [
+    "Why is my crime data showing old?",
+    "Why is water quality data unavailable?",
+    "How is the NeighborhoodIQ Score calculated?",
+    "Where does your data come from?",
+    "How often is the data updated?"
+  ];
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({ ...prev, [name]: value }));
+  };
+
+  return (
+    <div className="bg-slate-50 min-h-screen pt-[72px]">
+      {/* Hero Section */}
+      <section className="relative h-[400px] flex items-center overflow-hidden">
+        <div className="absolute inset-0 z-0">
+          <img 
+            src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=2070&auto=format&fit=crop" 
+            alt="Support Background" 
+            className="w-full h-full object-cover brightness-[0.3]"
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-transparent to-slate-50"></div>
+        </div>
+        
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-white">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+          >
+            <span className="inline-block px-3 py-1 bg-[#11B573] text-white rounded text-[10px] font-bold uppercase tracking-widest mb-4">
+              SUPPORT CENTER
+            </span>
+            <h1 className="text-4xl md:text-5xl font-bold mb-6">How can we help you?</h1>
+            <p className="text-lg text-white/80 max-w-2xl leading-relaxed">
+              We're here to help you make better real estate decisions with accurate, 
+              transparent, and data-driven insights.
+            </p>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Feature Grid */}
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 -mt-20 relative z-20 mb-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+          {features.map((feature, i) => (
+            <motion.div
+              key={i}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: i * 0.1 }}
+              whileHover={{ y: -5, transition: { duration: 0.2 } }}
+              className="bg-white p-6 rounded-xl shadow-sm border border-slate-100 flex items-center space-x-4 hover:shadow-md transition-shadow cursor-default"
+            >
+              <div className="w-12 h-12 bg-emerald-50 rounded-lg flex items-center justify-center shrink-0">
+                {feature.icon}
+              </div>
+              <div>
+                <h3 className="font-bold text-slate-900">{feature.title}</h3>
+                <p className="text-xs text-slate-500">{feature.desc}</p>
+              </div>
+            </motion.div>
+          ))}
+        </div>
+      </section>
+
+      {/* Main Content Grid */}
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-12 gap-8 mb-16">
+        {/* Left Column - Support Form */}
+        <div className="lg:col-span-8 space-y-8">
+          {/* Form Content... */}
+        </div>
+
+        {/* Right Column - Sidebar */}
+        <div className="lg:col-span-4 space-y-6">
+          {/* System Status */}
+          <div className="bg-white rounded-2xl shadow-sm border border-slate-100 p-6 hover:shadow-md transition-shadow">
+            <div className="flex justify-between items-center mb-6">
+              <div className="flex items-center space-x-3 text-slate-900">
+                <div className="w-9 h-9 bg-emerald-50 text-[#11B573] rounded-lg flex items-center justify-center">
+                  <Activity size={18} />
+                </div>
+                <h3 className="font-bold">System Status</h3>
+              </div>
+              <div className="flex items-center space-x-2 px-2 py-1 bg-emerald-50 rounded-full">
+                <div className="w-1.5 h-1.5 rounded-full bg-[#11B573] animate-pulse"></div>
+                <span className="text-[9px] font-bold text-[#11B573] uppercase tracking-wider">All Systems Operational</span>
+              </div>
+            </div>
+            
+            <div className="space-y-4">
+              {systemStatus.map((item, i) => (
+                <div key={i} className="flex justify-between items-center py-1 group cursor-default">
+                  <span className="text-sm text-slate-600 flex items-center space-x-3 group-hover:text-slate-900 transition-colors">
+                    <CheckCircle2 size={14} className="text-emerald-500" />
+                    <span>{item.name}</span>
+                  </span>
+                  <span className="text-[10px] font-bold text-[#11B573]">{item.status}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Quick Help / FAQs */}
+          <div className="bg-white rounded-2xl shadow-sm border border-slate-100 p-6 hover:shadow-md transition-shadow">
+            <div className="flex items-center space-x-3 text-slate-900 mb-6">
+              <div className="w-9 h-9 bg-indigo-50 text-indigo-500 rounded-lg flex items-center justify-center">
+                <HelpCircle size={18} />
+              </div>
+              <h3 className="font-bold">Quick Help</h3>
+            </div>
+            
+            <div className="space-y-1">
+              {faqs.map((faq, i) => (
+                <button key={i} className="w-full flex items-center justify-between p-3 rounded-xl hover:bg-slate-50 group text-left transition-all">
+                  <span className="text-sm text-slate-600 group-hover:text-slate-900 transition-colors">{faq}</span>
+                  <ChevronRight size={14} className="text-slate-300 group-hover:text-slate-900 transition-all" />
+                </button>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  );
+};
+
+export default Support;
