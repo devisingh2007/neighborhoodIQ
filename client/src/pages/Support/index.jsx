@@ -66,22 +66,6 @@ const Support = () => {
     }
   ];
 
-  const systemStatus = [
-    { name: "Data Sync Services", status: "Operational" },
-    { name: "API Services", status: "Operational" },
-    { name: "Database (MongoDB)", status: "Operational" },
-    { name: "Cache (Redis)", status: "Operational" },
-    { name: "External Data Sources", status: "Operational" }
-  ];
-
-  const faqs = [
-    "Why is my crime data showing old?",
-    "Why is water quality data unavailable?",
-    "How is the NeighborhoodIQ Score calculated?",
-    "Where does your data come from?",
-    "How often is the data updated?"
-  ];
-
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setFormData(prev => ({ ...prev, [name]: value }));
@@ -144,57 +128,22 @@ const Support = () => {
 
       {/* Main Content Grid */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-12 gap-8 mb-16">
-        {/* Left Column - Support Form */}
         <div className="lg:col-span-8 space-y-8">
-          {/* Form Content... */}
-        </div>
-
-        {/* Right Column - Sidebar */}
-        <div className="lg:col-span-4 space-y-6">
-          {/* System Status */}
-          <div className="bg-white rounded-2xl shadow-sm border border-slate-100 p-6 hover:shadow-md transition-shadow">
-            <div className="flex justify-between items-center mb-6">
-              <div className="flex items-center space-x-3 text-slate-900">
-                <div className="w-9 h-9 bg-emerald-50 text-[#11B573] rounded-lg flex items-center justify-center">
-                  <Activity size={18} />
+          <div className="bg-white rounded-2xl shadow-sm border border-slate-100 overflow-hidden">
+            <div className="p-8 space-y-10">
+              <div className="space-y-6">
+                <div className="flex items-center space-x-3">
+                  <div className="w-7 h-7 bg-[#11B573] text-white rounded-full flex items-center justify-center text-xs font-bold">1</div>
+                  <h3 className="font-bold text-slate-900">Request Details</h3>
                 </div>
-                <h3 className="font-bold">System Status</h3>
-              </div>
-              <div className="flex items-center space-x-2 px-2 py-1 bg-emerald-50 rounded-full">
-                <div className="w-1.5 h-1.5 rounded-full bg-[#11B573] animate-pulse"></div>
-                <span className="text-[9px] font-bold text-[#11B573] uppercase tracking-wider">All Systems Operational</span>
-              </div>
-            </div>
-            
-            <div className="space-y-4">
-              {systemStatus.map((item, i) => (
-                <div key={i} className="flex justify-between items-center py-1 group cursor-default">
-                  <span className="text-sm text-slate-600 flex items-center space-x-3 group-hover:text-slate-900 transition-colors">
-                    <CheckCircle2 size={14} className="text-emerald-500" />
-                    <span>{item.name}</span>
-                  </span>
-                  <span className="text-[10px] font-bold text-[#11B573]">{item.status}</span>
+                {/* Form fields... */}
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  <div className="space-y-2">
+                    <label className="text-[10px] font-bold text-slate-400 uppercase">Request Type</label>
+                    <input type="text" value={formData.requestType} readOnly className="w-full px-4 py-3 bg-slate-50 border rounded-xl" />
+                  </div>
                 </div>
-              ))}
-            </div>
-          </div>
-
-          {/* Quick Help / FAQs */}
-          <div className="bg-white rounded-2xl shadow-sm border border-slate-100 p-6 hover:shadow-md transition-shadow">
-            <div className="flex items-center space-x-3 text-slate-900 mb-6">
-              <div className="w-9 h-9 bg-indigo-50 text-indigo-500 rounded-lg flex items-center justify-center">
-                <HelpCircle size={18} />
               </div>
-              <h3 className="font-bold">Quick Help</h3>
-            </div>
-            
-            <div className="space-y-1">
-              {faqs.map((faq, i) => (
-                <button key={i} className="w-full flex items-center justify-between p-3 rounded-xl hover:bg-slate-50 group text-left transition-all">
-                  <span className="text-sm text-slate-600 group-hover:text-slate-900 transition-colors">{faq}</span>
-                  <ChevronRight size={14} className="text-slate-300 group-hover:text-slate-900 transition-all" />
-                </button>
-              ))}
             </div>
           </div>
         </div>
