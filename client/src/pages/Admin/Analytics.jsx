@@ -32,7 +32,10 @@ const Analytics = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const res = await axios.get(`${import.meta.env.VITE_API_URL}/admin/analytics`);
+        const token = localStorage.getItem('token');
+        const res = await axios.get(`${import.meta.env.VITE_API_URL}/admin/analytics`, {
+          headers: { Authorization: `Bearer ${token}` }
+        });
         setData(res.data);
         setLoading(false);
       } catch (err) {
